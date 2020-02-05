@@ -127,11 +127,10 @@ class Schedule_model extends App_Model
             'touserid'        => 1,
             'description'     => $schedule_desc,
             'additional_data' => serialize([
-                format_schedule_type($schedule->schedule_type),
-                $schedule->achievement,
-                $achievement['total'],
-                _d($schedule->start_date),
-                _d($schedule->end_date),
+                $schedule->summary,
+                $schedule->staff_id,
+                _d($schedule->schedule_date),
+                format_schedule_time($schedule->schedule_time),
             ]),
         ]);
         if ($notified) {

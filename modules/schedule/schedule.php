@@ -98,7 +98,7 @@ function schedule_notification()
     $CI->load->model('schedule/schedule_model');
     $schedule = $CI->schedule_model->get('', true);
     foreach ($schedule as $schedule) {
-        if (date('Y-m-d') > $schedule['end_date']) {
+        if (date('Y-m-d') > $schedule['schedule_date']) {
             $CI->schedule_model->notify_staff_members($schedule['id']);
         }
     }
