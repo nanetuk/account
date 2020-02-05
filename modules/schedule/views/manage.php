@@ -8,7 +8,7 @@
                     <div class="panel-body">
                      <?php if(has_permission('schedule','','create')){ ?>
                      <div class="_buttons">
-                        <a href="<?php echo admin_url('schedule/schedule'); ?>" class="btn btn-info pull-left display-block"><?php echo _l('new_schedule'); ?></a>
+                        <a href="<?php echo admin_url('schedule/edit'); ?>" class="btn btn-info pull-left display-block"><?php echo _l('new_schedule'); ?></a>
                     </div>
                     <div class="clearfix"></div>
                     <hr class="hr-panel-heading" />

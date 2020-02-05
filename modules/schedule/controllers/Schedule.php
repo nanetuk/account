@@ -24,7 +24,7 @@ class Schedule extends AdminController
         $this->load->view('manage', $data);
     }
 
-    public function schedule($id = '')
+    public function edit($id = '')
     {
         if (!has_permission('schedule', '', 'view')) {
             access_denied('schedule');
@@ -37,7 +37,7 @@ class Schedule extends AdminController
                 $id = $this->schedule_model->add($this->input->post());
                 if ($id) {
                     set_alert('success', _l('added_successfully', _l('schedule')));
-                    redirect(admin_url('schedule/schedule/' . $id));
+                    redirect(admin_url('schedule/edit/' . $id));
                 }
             } else {
                 if (!has_permission('schedule', '', 'edit')) {
@@ -47,7 +47,7 @@ class Schedule extends AdminController
                 if ($success) {
                     set_alert('success', _l('updated_successfully', _l('schedule')));
                 }
-                redirect(admin_url('schedule/schedule/' . $id));
+                redirect(admin_url('schedule/edit/' . $id));
             }
         }
         if ($id == '') {
@@ -101,6 +101,6 @@ class Schedule extends AdminController
         } else {
             set_alert('warning', _l('schedule_notify_staff_notified_manually_fail'));
         }
-        redirect(admin_url('schedule/schedule/' . $id));
+        redirect(admin_url('schedule/edit/' . $id));
     }
 }
