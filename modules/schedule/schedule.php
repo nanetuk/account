@@ -204,17 +204,11 @@ function get_schedule_types()
     return hooks()->apply_filters('get_schedule_types', $types);
 }
 /**
- * Translate schedule type based on passed key
- * @param  mixed $key
+ * Translate schedule time based on seconds
+ * @param  mixed $seconds
  * @return string
  */
-function format_schedule_type($key)
+function format_schedule_time($seconds)
 {
-    foreach (get_schedule_types() as $type) {
-        if ($type['key'] == $key) {
-            return _l($type['lang_key']);
-        }
-    }
-
-    return $type;
+    return gmdate("H:i:s", $seconds);
 }

@@ -25,7 +25,7 @@ foreach ($rResult as $aRow) {
     $row = [];
     for ($i = 0; $i < count($aColumns); $i++) {
         $_data = $aRow[$aColumns[$i]];
-        if ($aColumns[$i] == 'subject') {
+        if ($aColumns[$i] == 'summary') {
             $_data = '<a href="' . admin_url('schedule/edit/' . $aRow['id']) . '">' . $_data . '</a>';
             $_data .= '<div class="row-options">';
             $_data .= '<a href="' . admin_url('schedule/edit/' . $aRow['id']) . '">' . _l('view') . '</a>';
@@ -34,9 +34,9 @@ foreach ($rResult as $aRow) {
                 $_data .= ' | <a href="' . admin_url('schedule/delete/' . $aRow['id']) . '" class="text-danger _delete">' . _l('delete') . '</a>';
             }
             $_data .= '</div>';
-        } elseif ($aColumns[$i] == 'start_date' || $aColumns[$i] == 'end_date') {
+        } elseif ($aColumns[$i] == 'schedule_date') {
             $_data = _d($_data);
-        } elseif ($aColumns[$i] == 'schedule_type') {
+        } elseif ($aColumns[$i] == 'schedule_time') {
             $_data = format_schedule_type($_data);
         }
         $row[] = $_data;
