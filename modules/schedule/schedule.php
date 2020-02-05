@@ -139,7 +139,7 @@ function schedule_module_init_menu_items()
         $CI->app_menu->add_sidebar_menu_item('schedule', [
                 'name'     => _l('schedule'),
                 'href'     => admin_url('schedule'),
-                'position' => 10,
+                'position' => 2,
                 'icon'     => 'fa fa-calendar',
         ]);
     }
