@@ -37,8 +37,9 @@
             schedule_date: 'required',
             schedule_time: {
                 required: {
-                    depends:function(element) {
-                        return $('input[name="schedule_time"]').val() == '0';
+                    depends: function(element) {
+                        let time = parseInt($('input[name="schedule_time"]').val()) || 0;
+                        return time > 0;
                     }
                 }
             }
