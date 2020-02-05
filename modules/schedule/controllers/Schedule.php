@@ -96,9 +96,7 @@ class Schedule extends AdminController
         }
         $success = $this->schedule_model->notify_staff_members($id);
         if ($success) {
-            set_alert('success', _l('schedule_notify_staff_notified_manually_success'));
-        } else {
-            set_alert('warning', _l('schedule_notify_staff_notified_manually_fail'));
+            set_alert('success', _l('schedule_notify'));
         }
         redirect(admin_url('schedule/edit/' . $id));
     }

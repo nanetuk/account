@@ -43,7 +43,7 @@ function schedule_staff_member_deleted($data)
 function schedule_global_search_result_output($output, $data)
 {
     if ($data['type'] == 'schedule') {
-        $output = '<a href="' . admin_url('schedule/schedule/' . $data['result']['id']) . '">' . $data['result']['subject'] . '</a>';
+        $output = '<a href="' . admin_url('schedule/edit/' . $data['result']['id']) . '">' . $data['result']['subject'] . '</a>';
     }
 
     return $output;
@@ -98,20 +98,8 @@ function schedule_notification()
     $CI->load->model('schedule/schedule_model');
     $schedule = $CI->schedule_model->get('', true);
     foreach ($schedule as $schedule) {
-        $achievement = $CI->schedule_model->calculate_schedule_achievement($schedule['id']);
-        if ($achievement['percent'] >= 100) {
-            if ($schedule['notify_when_achieve'] == 1) {
-                if (date('Y-m-d') >= $schedule['end_date']) {
-                    $CI->schedule_model->notify_staff_members($schedule['id'], 'success', $achievement);
-                }
-            }
-        } else {
-            // not yet achieved, check for end date
-            if ($schedule['notify_when_fail'] == 1) {
-                if (date('Y-m-d') > $schedule['end_date']) {
-                    $CI->schedule_model->notify_staff_members($schedule['id'], 'failed', $achievement);
-                }
-            }
+        if (date('Y-m-d') > $schedule['end_date']) {
+            $CI->schedule_model->notify_staff_members($schedule['id']);
         }
     }
 }
@@ -142,7 +130,7 @@ function schedule_module_init_menu_items()
 
     $CI->app->add_quick_actions_link([
             'name'       => _l('schedule'),
-            'url'        => 'schedule/schedule',
+            'url'        => 'schedule/edit',
             'permission' => 'schedule',
             'position'   => 56,
             ]);
@@ -157,52 +145,6 @@ function schedule_module_init_menu_items()
     }
 }
 
-
-/**
- * Get schedule types for the schedule feature
- * @return array
- */
-function get_schedule_types()
-{
-    $types = [
-        [
-            'key'      => 1,
-            'lang_key' => 'schedule_type_total_income',
-            'subtext'  => 'schedule_type_income_subtext',
-        ],
-        [
-            'key'      => 2,
-            'lang_key' => 'schedule_type_convert_leads',
-        ],
-        [
-            'key'      => 3,
-            'lang_key' => 'schedule_type_increase_customers_without_leads_conversions',
-            'subtext'  => 'schedule_type_increase_customers_without_leads_conversions_subtext',
-        ],
-        [
-            'key'      => 4,
-            'lang_key' => 'schedule_type_increase_customers_with_leads_conversions',
-            'subtext'  => 'schedule_type_increase_customers_with_leads_conversions_subtext',
-        ],
-        [
-            'key'      => 5,
-            'lang_key' => 'schedule_type_make_contracts_by_type_calc_database',
-            'subtext'  => 'schedule_type_make_contracts_by_type_calc_database_subtext',
-        ],
-        [
-            'key'      => 7,
-            'lang_key' => 'schedule_type_make_contracts_by_type_calc_date',
-            'subtext'  => 'schedule_type_make_contracts_by_type_calc_date_subtext',
-        ],
-        [
-            'key'      => 6,
-            'lang_key' => 'schedule_type_total_estimates_converted',
-            'subtext'  => 'schedule_type_total_estimates_converted_subtext',
-        ],
-    ];
-
-    return hooks()->apply_filters('get_schedule_types', $types);
-}
 /**
  * Translate schedule time based on seconds
  * @param  mixed $seconds

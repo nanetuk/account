@@ -3,12 +3,11 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 $aColumns = [
-    'subject',
+    'summary',
     'CONCAT(firstname," ", lastname)',
-    'achievement',
-    'start_date',
-    'end_date',
-    'schedule_type',
+    'summary_date',
+    'summary_time',
+    'notified',
 ];
 
 $sIndexColumn = 'id';
@@ -37,24 +36,11 @@ foreach ($rResult as $aRow) {
         } elseif ($aColumns[$i] == 'schedule_date') {
             $_data = _d($_data);
         } elseif ($aColumns[$i] == 'schedule_time') {
-            $_data = format_schedule_type($_data);
+            $_data = format_schedule_time($_data);
+        } elseif ($aColumns[$i] == 'notified') {
+            $_data = $_data ? _l('yes') : _l('no');
         }
         $row[] = $_data;
     }
-    ob_start();
-    $achievement          = $this->ci->schedule_model->calculate_schedule_achievement($aRow['id']);
-    $percent              = $achievement['percent'];
-    $progress_bar_percent = $achievement['progress_bar_percent']; ?>
-    <input type="hidden" value="<?php
-    echo $progress_bar_percent; ?>" name="percent">
-    <div class="schedule-progress" data-reverse="true">
-       <strong class="schedule-percent"><?php
-        echo $percent; ?>%</strong>
-    </div>
-    <?php
-    $progress = ob_get_contents();
-    ob_end_clean();
-    $row[]              = $progress;
-    $row['DT_RowClass'] = 'has-row-options';
     $output['aaData'][] = $row;
 }
