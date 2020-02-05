@@ -9,7 +9,7 @@ Version: 2.3.0
 Requires at least: 2.3.*
 */
 
-define('SCHEWDULE_MODULE_NAME', 'schedule');
+define('SCHEDULE_MODULE_NAME', 'schedule');
 
 hooks()->add_action('after_cron_run', 'schedule_notification');
 hooks()->add_action('admin_init', 'schedule_module_init_menu_items');
