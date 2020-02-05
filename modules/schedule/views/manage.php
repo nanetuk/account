@@ -16,8 +16,8 @@
                     <?php render_datatable(array(
                         _l('schedule_summary'),
                         _l('staff_member'),
-                        _l('schedule_time'),
                         _l('schedule_date'),
+                        _l('schedule_time'),
                         ),'schedule'); ?>
                     </div>
                 </div>

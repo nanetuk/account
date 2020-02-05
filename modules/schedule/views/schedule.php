@@ -12,19 +12,14 @@
                         <?php $attrs = (isset($schedule) ? array() : array('autofocus'=>true)); ?>
                         <?php $value = (isset($schedule) ? $schedule->summary : ''); ?>
                         <?php echo render_input('summary','schedule_summary',$value,'text',$attrs); ?>
-                          <?php
-                           $selected = (isset($schedule) ? $schedule->staff_id : '');
-                           echo render_select('staff_id',$members,array('staffid',array('firstname','lastname')),'staff_member',$selected,array('data-none-selected-text'=>_l('all_staff_members'))); ?>
-                        <?php $value = (isset($schedule) ? $schedule->schedule_time : ''); ?>
-                        <?php echo render_input('schedule_time','schedule_schedule_time',$value,'number'); ?>
+                        <?php $selected = (isset($schedule) ? $schedule->staff_id : ''); ?>
+                        <?php echo render_select('staff_id',$members,array('staffid',array('firstname','lastname')),'staff_member',$selected,array('data-none-selected-text'=>_l('all_staff_members'))); ?>
                         <?php $value = (isset($schedule) ? _d($schedule->schedule_date) : _d(date('Y-m-d'))); ?>
                         <?php echo render_date_input('schedule_date','schedule_schedule_date',$value); ?>
+                        <?php $value = (isset($schedule) ? $schedule->schedule_time : ''); ?>
+                        <?php echo render_input('schedule_time','schedule_schedule_time',$value,'number'); ?>
                         <?php $value = (isset($schedule) ? $schedule->description : ''); ?>
                         <?php echo render_textarea('description','schedule_description',$value); ?>
-                        <div class="checkbox checkbox-primary">
-                            <input type="checkbox" name="notify" id="notify" <?php if(isset($schedule)){if($schedule->notify == 1){echo 'checked';} } else {echo 'checked';} ?>>
-                            <label for="notify"><?php echo _l('schedule_notify'); ?></label>
-                        </div>
                         <button type="submit" class="btn btn-info pull-right"><?php echo _l('submit'); ?></button>
                         <?php echo form_close(); ?>
                     </div>
