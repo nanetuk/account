@@ -29,7 +29,7 @@
 <?php init_tail(); ?>
 <script>
     $(function(){
-        initDataTable('.table-schedule', window.location.href, [5], [5]);
+        initDataTable('.table-schedule', window.location.href, [4], [4]);
     });
 </script>
 </body>
