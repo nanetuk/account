@@ -35,7 +35,13 @@
             summary: 'required',
             staff_id: 'required',
             schedule_date: 'required',
-            schedule_time: 'required'
+            schedule_time: {
+                required: {
+                    depends:function(element) {
+                        return $('input[name="schedule_time"]').val() == '0';
+                    }
+                }
+            }
         });
     });
     </script>
