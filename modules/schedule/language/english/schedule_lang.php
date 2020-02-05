@@ -4,7 +4,7 @@
 
 $lang['schedules']                                                          = 'Schedules';
 $lang['schedule']                                                           = 'Schedule';
-$lang['schedules_tracking']                                                 = 'Schedules Tracking';
+$lang['schedule_tracking']                                                  = 'Schedules Tracking';
 $lang['new_schedule']                                                       = 'New schedule';
 $lang['schedule_lowercase']                                                 = 'schedule';
 $lang['schedule_start_date']                                                = 'Start Date';
