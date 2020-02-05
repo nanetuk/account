@@ -52,19 +52,14 @@ class Schedule extends AdminController
         if ($id == '') {
             $title = _l('add_new', _l('schedule_lowercase'));
         } else {
-            $data['schedule']        = $this->schedule_model->get($id);
-            $data['achievement'] = $this->schedule_model->calculate_schedule_achievement($id);
-
+            $data['schedule'] = $this->schedule_model->get($id);
             $title = _l('edit', _l('schedule_lowercase'));
         }
 
         $this->load->model('staff_model');
         $data['members'] = $this->staff_model->get('', ['is_not_staff' => 0, 'active'=>1]);
 
-        $this->load->model('contracts_model');
-        $data['contract_types']        = $this->contracts_model->get_contract_types();
-        $data['title']                 = $title;
-        $this->app_scripts->add('circle-progress-js','assets/plugins/jquery-circle-progress/circle-progress.min.js');
+        $data['title'] = $title;
         $this->load->view('schedule', $data);
     }
 

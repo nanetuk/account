@@ -15,9 +15,9 @@
                         <?php $selected = (isset($schedule) ? $schedule->staff_id : ''); ?>
                         <?php echo render_select('staff_id',$members,array('staffid',array('firstname','lastname')),'staff_member',$selected,array()); ?>
                         <?php $value = (isset($schedule) ? _d($schedule->schedule_date) : _d(date('Y-m-d'))); ?>
-                        <?php echo render_date_input('schedule_date','schedule_schedule_date',$value); ?>
+                        <?php echo render_date_input('schedule_date','schedule_date',$value); ?>
                         <?php $value = (isset($schedule) ? $schedule->schedule_time : ''); ?>
-                        <?php echo render_input('schedule_time','schedule_schedule_time',$value,'number'); ?>
+                        <?php echo render_input('schedule_time','schedule_time',$value,'number'); ?>
                         <?php $value = (isset($schedule) ? $schedule->description : ''); ?>
                         <?php echo render_textarea('description','schedule_description',$value); ?>
                         <button type="submit" class="btn btn-info pull-right"><?php echo _l('submit'); ?></button>
@@ -32,10 +32,11 @@
 <script>
     $(function(){
        appValidateForm($('form'), {
-        summary: 'required',
-        staff_id: 'required',
-        schedule_date: 'required',
-        schedule_time: 'required'
+            summary: 'required',
+            staff_id: 'required',
+            schedule_date: 'required',
+            schedule_time: 'required'
+        });
     });
     </script>
 </body>
