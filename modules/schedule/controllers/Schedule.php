@@ -19,7 +19,6 @@ class Schedule extends AdminController
         if ($this->input->is_ajax_request()) {
             $this->app->get_table_data(module_views_path('schedule', 'table'));
         }
-        $this->app_scripts->add('circle-progress-js','assets/plugins/jquery-circle-progress/circle-progress.min.js');
         $data['title']                 = _l('schedule_tracking');
         $this->load->view('manage', $data);
     }
@@ -87,7 +86,7 @@ class Schedule extends AdminController
         redirect(admin_url('schedule'));
     }
 
-    public function notify($id, $notify_type)
+    public function notify($id)
     {
         if (!has_permission('schedule', '', 'edit') && !has_permission('schedule', '', 'create')) {
             access_denied('schedule');
@@ -95,7 +94,7 @@ class Schedule extends AdminController
         if (!$id) {
             redirect(admin_url('schedule'));
         }
-        $success = $this->schedule_model->notify_staff_members($id, $notify_type);
+        $success = $this->schedule_model->notify_staff_members($id);
         if ($success) {
             set_alert('success', _l('schedule_notify_staff_notified_manually_success'));
         } else {
