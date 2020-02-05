@@ -18,6 +18,7 @@
                         _l('staff_member'),
                         _l('schedule_date'),
                         _l('schedule_time'),
+                        _l('schedule_notified'),
                         ),'schedule'); ?>
                     </div>
                 </div>
@@ -28,7 +29,7 @@
 <?php init_tail(); ?>
 <script>
     $(function(){
-        initDataTable('.table-schedule', window.location.href, [4], [4]);
+        initDataTable('.table-schedule', window.location.href, [5], [5]);
     });
 </script>
 </body>
