@@ -5,8 +5,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $aColumns = [
     'summary',
     'CONCAT(firstname," ", lastname)',
-    'summary_date',
-    'summary_time',
+    'schedule_date',
+    'schedule_time',
     'notified',
 ];
 
