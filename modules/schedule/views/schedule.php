@@ -39,7 +39,7 @@
                 required: {
                     depends: function(element) {
                         let time = parseInt($('input[name="schedule_time"]').val()) || 0;
-                        return time > 0;
+                        return time == 0;
                     }
                 }
             }
