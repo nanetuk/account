@@ -35,7 +35,16 @@
             summary: 'required',
             staff_id: 'required',
             schedule_date: 'required',
-            schedule_time: 'required'
+            schedule_time: {
+                required: {
+                    depends: function(element) {
+                        let time = parseInt($('input[name="schedule_time"]').val()) || 0;
+                        console.log(time);
+                        return false;
+                        return time == 0;
+                    }
+                }
+            }
         });
     });
     </script>
