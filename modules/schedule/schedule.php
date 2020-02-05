@@ -136,11 +136,11 @@ function schedule_module_init_menu_items()
             ]);
 
     if (has_permission('schedule', '', 'view')) {
-        $CI->app_menu->add_sidebar_children_item('utilities', [
-                'slug'     => 'schedule-tracking',
+        $CI->app_menu->add_sidebar_menu_item('schedule', [
                 'name'     => _l('schedule'),
                 'href'     => admin_url('schedule'),
-                'position' => 24,
+                'position' => 10,
+                'icon'     => 'fa fa-calendar',
         ]);
     }
 }
