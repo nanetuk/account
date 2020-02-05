@@ -40,7 +40,7 @@
                     depends: function(element) {
                         let time = parseInt($('input[name="schedule_time"]').val()) || 0;
                         console.log(time);
-                        return false;
+                        return true;
                         return time == 0;
                     }
                 }
