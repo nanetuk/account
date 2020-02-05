@@ -13,7 +13,7 @@
                         <?php $value = (isset($schedule) ? $schedule->summary : ''); ?>
                         <?php echo render_input('summary','schedule_summary',$value,'text',$attrs); ?>
                         <?php $selected = (isset($schedule) ? $schedule->staff_id : ''); ?>
-                        <?php echo render_select('staff_id',$members,array('staffid',array('firstname','lastname')),'staff_member',$selected,array('data-none-selected-text'=>_l('all_staff_members'))); ?>
+                        <?php echo render_select('staff_id',$members,array('staffid',array('firstname','lastname')),'staff_member',$selected,array()); ?>
                         <?php $value = (isset($schedule) ? _d($schedule->schedule_date) : _d(date('Y-m-d'))); ?>
                         <?php echo render_date_input('schedule_date','schedule_schedule_date',$value); ?>
                         <?php $value = (isset($schedule) ? $schedule->schedule_time : ''); ?>
@@ -27,10 +27,6 @@
             </div>
         </div>
     </div>
-</div>
-<?php } ?>
-</div>
-</div>
 </div>
 <?php init_tail(); ?>
 <script>
