@@ -19,17 +19,6 @@ hooks()->add_action('admin_init', 'schedule_permissions');
 hooks()->add_filter('migration_tables_to_replace_old_links', 'schedule_migration_tables_to_replace_old_links');
 hooks()->add_filter('global_search_result_query', 'schedule_global_search_result_query', 10, 3);
 hooks()->add_filter('global_search_result_output', 'schedule_global_search_result_output', 10, 2);
-hooks()->add_filter('get_dashboard_widgets', 'schedule_add_dashboard_widget');
-
-function schedule_add_dashboard_widget($widgets)
-{
-    $widgets[] = [
-            'path'      => 'schedule/widget',
-            'container' => 'right-4',
-        ];
-
-    return $widgets;
-}
 
 function schedule_staff_member_deleted($data)
 {
@@ -43,7 +32,7 @@ function schedule_staff_member_deleted($data)
 function schedule_global_search_result_output($output, $data)
 {
     if ($data['type'] == 'schedule') {
-        $output = '<a href="' . admin_url('schedule/edit/' . $data['result']['id']) . '">' . $data['result']['subject'] . '</a>';
+        $output = '<a href="' . admin_url('schedule/edit/' . $data['result']['id']) . '">' . $data['result']['summary'] . '</a>';
     }
 
     return $output;
@@ -54,9 +43,9 @@ function schedule_global_search_result_query($result, $q, $limit)
     $CI = &get_instance();
     if (has_permission('schedule', '', 'view')) {
         // Schedule
-        $CI->db->select()->from(db_prefix() . 'schedule')->like('description', $q)->or_like('subject', $q)->limit($limit);
+        $CI->db->select()->from(db_prefix() . 'schedule')->like('description', $q)->or_like('summary', $q)->limit($limit);
 
-        $CI->db->order_by('subject', 'ASC');
+        $CI->db->order_by('summary', 'ASC');
 
         $result[] = [
                 'result'         => $CI->db->get()->result_array(),
