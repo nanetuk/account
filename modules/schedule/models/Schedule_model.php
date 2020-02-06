@@ -117,6 +117,7 @@ class Schedule_model extends App_Model
     public function notify_staff_members($id)
     {
         $this->load->model('staff_model');
+        $this->load->model('emails_model');
 
         $schedule = $this->get($id);
         $staff = $this->staff_model->get($schedule->staff_id);
@@ -147,7 +148,7 @@ class Schedule_model extends App_Model
             $message = sprintf(_l('schedule_message_success'), $staff->full_name,
             _d($schedule->schedule_date),
             format_schedule_time($schedule->schedule_time));
-            send_simple_email($admin->email, _l('schedule_email_subject') . ' - ' . $staff->full_name, $message);
+            $this->staff_model->send_simple_email($admin->email, _l('schedule_email_subject') . ' - ' . $staff->full_name, $message);
             return true;
         }
 
