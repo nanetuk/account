@@ -79,6 +79,7 @@ class Schedule extends AdminController
             $data['timesheets']  = $data['logged_time']['timesheets'];
             $this->load->model('currencies_model');
             $data['base_currency'] = $this->currencies_model->get_base_currency();
+            $data['member'] = $member;
         }
 
         $data['members'] = $this->staff_model->get('', ['is_not_staff' => 0, 'active'=>1]);
