@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2 text-right">
+                        <div class="col-md-12 text-right">
                             <button type="submit" class="btn btn-success apply-timesheets-filters"><?php echo _l('apply'); ?></button>
                         </div>
                     </div>
