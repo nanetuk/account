@@ -31,6 +31,9 @@ class Schedule extends AdminController
         }
 
         if ($this->input->post()) {
+            if (!is_admin() && get_staff_user_id() != $this->input->post('staff_id')) {
+                access_denied('schedule');
+            }
             if ($id == '') {
                 if (!has_permission('schedule', '', 'create')) {
                     access_denied('schedule');

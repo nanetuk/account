@@ -12,8 +12,10 @@
                         <?php $attrs = (isset($schedule) ? array() : array('autofocus'=>true)); ?>
                         <?php $value = (isset($schedule) ? $schedule->summary : ''); ?>
                         <?php echo render_input('summary','schedule_summary',$value,'text',$attrs); ?>
-                        <?php $selected = (isset($schedule) ? $schedule->staff_id : ''); ?>
+                        <?php if (is_admin()) { ?>
+                        <?php $selected = (isset($schedule) ? $schedule->staff_id : get_staff_user_id()); ?>
                         <?php echo render_select('staff_id',$members,array('staffid',array('firstname','lastname')),'staff_member',$selected); ?>
+                        <?php } else { echo form_hidden('staff_id',get_staff_user_id()); } ?>
                         <?php $value = (isset($schedule) ? _d($schedule->schedule_date) : _d(date('Y-m-d'))); ?>
                         <?php echo render_date_input('schedule_date','schedule_date',$value); ?>
                         <?php $value = (isset($schedule) ? $schedule->schedule_time : ''); ?>
