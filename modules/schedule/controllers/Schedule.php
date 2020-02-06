@@ -78,7 +78,7 @@ class Schedule extends AdminController
                 }
             } else {
                 $ts_filter_data['period-from'] = $data['period_from'] = $data['schedule']->schedule_date;
-                $ts_filter_data['period-to'] = $data['period_from'] = $data['schedule']->schedule_date;
+                $ts_filter_data['period-to'] = $data['period_to'] = $data['schedule']->schedule_date;
                 $data['range'] = 'period';
             }
 
