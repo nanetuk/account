@@ -127,7 +127,7 @@ class Schedule_model extends App_Model
             'touserid'        => 1,
             'description'     => 'not_schedule_message_success',
             'additional_data' => serialize([
-                $staff['full_name'],
+                $staff->full_name,
                 _d($schedule->schedule_date),
                 format_schedule_time($schedule->schedule_time),
             ]),
