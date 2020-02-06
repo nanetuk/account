@@ -68,11 +68,12 @@ class Schedule extends AdminController
                 if ($this->input->get('range') != 'period') {
                     $ts_filter_data[$this->input->get('range')] = true;
                 } else {
-                    $ts_filter_data['period-from'] = $this->input->get('period-from');
-                    $ts_filter_data['period-to']   = $this->input->get('period-to');
+                    $ts_filter_data['period-from'] = $data['schedule']->schedule_date;
+                    $ts_filter_data['period-to']   = $data['schedule']->schedule_date;
                 }
             } else {
-                $ts_filter_data['this_month'] = true;
+                $ts_filter_data['period-from'] = $this->input->get('period-from');
+                $ts_filter_data['period-to']   = $this->input->get('period-to');
             }
 
             $data['logged_time'] = $this->staff_model->get_logged_time_data($id, $ts_filter_data);
