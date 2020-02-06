@@ -8,6 +8,7 @@ class Schedule extends AdminController
     {
         parent::__construct();
         $this->load->model('schedule_model');
+        $this->load->model('staff_model');
     }
 
     /* List all announcements */
@@ -28,6 +29,7 @@ class Schedule extends AdminController
         if (!has_permission('schedule', '', 'view')) {
             access_denied('schedule');
         }
+
         if ($this->input->post()) {
             if ($id == '') {
                 if (!has_permission('schedule', '', 'create')) {
@@ -49,14 +51,34 @@ class Schedule extends AdminController
                 redirect(admin_url('schedule/edit/' . $id));
             }
         }
+
         if ($id == '') {
             $title = _l('add_new', _l('schedule_lowercase'));
         } else {
             $data['schedule'] = $this->schedule_model->get($id);
             $title = _l('edit', _l('schedule_lowercase'));
+
+            $member = $this->staff_model->get($data['schedule']['staff_id']);
+            if (!$member) {
+                blank_page('Staff Member Not Found', 'danger');
+            }
+
+            $ts_filter_data = [];
+            if ($this->input->get('filter')) {
+                if ($this->input->get('range') != 'period') {
+                    $ts_filter_data[$this->input->get('range')] = true;
+                } else {
+                    $ts_filter_data['period-from'] = $this->input->get('period-from');
+                    $ts_filter_data['period-to']   = $this->input->get('period-to');
+                }
+            } else {
+                $ts_filter_data['this_month'] = true;
+            }
+
+            $data['logged_time'] = $this->staff_model->get_logged_time_data($id, $ts_filter_data);
+            $data['timesheets']  = $data['logged_time']['timesheets'];
         }
 
-        $this->load->model('staff_model');
         $data['members'] = $this->staff_model->get('', ['is_not_staff' => 0, 'active'=>1]);
 
         $data['title'] = $title;
