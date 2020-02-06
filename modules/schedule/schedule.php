@@ -25,7 +25,7 @@ function schedule_add_dashboard_widget($widgets)
 {
     $widgets[] = [
             'path'      => 'schedule/widget',
-            'container' => 'right-5',
+            'container' => 'right-4',
         ];
 
     return $widgets;
