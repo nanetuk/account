@@ -148,7 +148,7 @@ class Schedule_model extends App_Model
             $message = sprintf(_l('schedule_message_success'), $staff->full_name,
             _d($schedule->schedule_date),
             format_schedule_time($schedule->schedule_time));
-            $this->staff_model->send_simple_email($admin->email, _l('schedule_email_subject') . ' - ' . $staff->full_name, $message);
+            $this->emails_model->send_simple_email($admin->email, _l('schedule_email_subject') . ' - ' . $staff->full_name, $message);
             return true;
         }
 
