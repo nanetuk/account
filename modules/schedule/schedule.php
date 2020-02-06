@@ -152,5 +152,5 @@ function schedule_module_init_menu_items()
  */
 function format_schedule_time($seconds)
 {
-    return gmdate("H:i:s", $seconds * 60);
+    return gmdate("H:i", $seconds * 60);
 }

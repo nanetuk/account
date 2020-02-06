@@ -14,8 +14,5 @@ $lang['schedule_description']                                               = 'D
 $lang['schedule_notify']                                                    = 'Notify';
 $lang['schedule_notified']                                                  = 'Notifed?';
 $lang['schedule_total']                                                     = 'Total: %s';
-$lang['not_schedule_message_success']                                       = 'Congratulations! We achieved new schedule.<br /> schedule Type: %s
-<br />schedule Achievement: %s
-<br />Total Achievement: %s
-<br />Start Date: %s
-<br />End Date: %s';
+$lang['not_schedule_message_success']                                       = 'New schedule!<br /> Date: %s
+<br />Time: %s';

@@ -122,13 +122,11 @@ class Schedule_model extends App_Model
         $staff = $this->db->get(db_prefix() . 'staff')->result_array();
 
         $notifiedUsers = [];
-        $notified = add_notification([
+        $notified = add_notification([  
             'fromcompany'     => 1,
             'touserid'        => 1,
-            'description'     => $schedule->description,
+            'description'     => 'not_schedule_message_success',
             'additional_data' => serialize([
-                $schedule->summary,
-                $schedule->staff_id,
                 _d($schedule->schedule_date),
                 format_schedule_time($schedule->schedule_time),
             ]),
