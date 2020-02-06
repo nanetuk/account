@@ -3,7 +3,7 @@
 <div id="wrapper">
     <div class="content">
         <div class="row">
-            <div class="col-md-<?php if(!isset($schedule)){echo '8 col-md-offset-2';} else {echo '6';} ?>">
+            <div class="col-md-<?php if(!isset($schedule)){echo '8 col-md-offset-2';} else {echo '12';} ?>">
                 <div class="panel_s">
                     <div class="panel-body">
                         <h4 class="no-margin"><?php echo $title; ?></h4>
@@ -36,22 +36,22 @@
                     <?php echo form_open($this->uri->uri_string(),array('method'=>'GET')); ?>
                     <?php echo form_hidden('filter','true'); ?>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="select-placeholder">
                                 <select name="range" id="range" class="selectpicker" data-width="100%">
-                                <option value="this_month" <?php if(!$this->input->get('range') || $this->input->get('range') == 'this_month'){echo 'selected';} ?>><?php echo _l('staff_stats_this_month_total_logged_time'); ?></option>
-                                <option value="last_month" <?php if($this->input->get('range') == 'last_month'){echo 'selected';} ?>><?php echo _l('staff_stats_last_month_total_logged_time'); ?></option>
-                                <option value="this_week" <?php if($this->input->get('range') == 'this_week'){echo 'selected';} ?>><?php echo _l('staff_stats_this_week_total_logged_time'); ?></option>
-                                <option value="last_week" <?php if($this->input->get('range') == 'last_week'){echo 'selected';} ?>><?php echo _l('staff_stats_last_week_total_logged_time'); ?></option>
-                                <option value="period" <?php if($this->input->get('range') == 'period'){echo 'selected';} ?>><?php echo _l('period_datepicker'); ?></option>
+                                <option value="this_month" <?php if(!$range || $range == 'this_month'){echo 'selected';} ?>><?php echo _l('staff_stats_this_month_total_logged_time'); ?></option>
+                                <option value="last_month" <?php if($range == 'last_month'){echo 'selected';} ?>><?php echo _l('staff_stats_last_month_total_logged_time'); ?></option>
+                                <option value="this_week" <?php if($range == 'this_week'){echo 'selected';} ?>><?php echo _l('staff_stats_this_week_total_logged_time'); ?></option>
+                                <option value="last_week" <?php if($range == 'last_week'){echo 'selected';} ?>><?php echo _l('staff_stats_last_week_total_logged_time'); ?></option>
+                                <option value="period" <?php if($range == 'period'){echo 'selected';} ?>><?php echo _l('period_datepicker'); ?></option>
                                 </select>
                             </div>
                             <div class="row mtop15">
-                                <div class="col-md-12 period <?php if($this->input->get('range') != 'period'){echo 'hide';} ?>">
-                                <?php echo render_date_input('period-from','',$this->input->get('period-from')); ?>
+                                <div class="col-md-12 period <?php if($range != 'period'){echo 'hide';} ?>">
+                                <?php echo render_date_input('period-from','',$period_from); ?>
                                 </div>
-                                <div class="col-md-12 period <?php if($this->input->get('range') != 'period'){echo 'hide';} ?>">
-                                <?php echo render_date_input('period-to','',$this->input->get('period-to')); ?>
+                                <div class="col-md-12 period <?php if($range != 'period'){echo 'hide';} ?>">
+                                <?php echo render_date_input('period-to','',$period_to); ?>
                                 </div>
                             </div>
                         </div>
