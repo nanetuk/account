@@ -8,7 +8,6 @@ class Schedule extends AdminController
     {
         parent::__construct();
         $this->load->model('schedule_model');
-        $this->load->model('staff_model');
     }
 
     /* List all announcements */
@@ -26,6 +25,8 @@ class Schedule extends AdminController
 
     public function edit($id = '')
     {
+        $this->load->model('staff_model');
+        
         if (!has_permission('schedule', '', 'view')) {
             access_denied('schedule');
         }

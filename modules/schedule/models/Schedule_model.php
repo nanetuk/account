@@ -116,10 +116,10 @@ class Schedule_model extends App_Model
      */
     public function notify_staff_members($id)
     {
-        $schedule = $this->get($id);
+        $this->load->model('staff_model');
 
-        $this->db->where('active', 1)->where('staffid', 1);
-        $staff = $this->db->get(db_prefix() . 'staff')->result_array();
+        $schedule = $this->get($id);
+        $staff = $this->staff_model->get($schedule->staff_id);
 
         $notifiedUsers = [];
         $notified = add_notification([  
@@ -127,6 +127,7 @@ class Schedule_model extends App_Model
             'touserid'        => 1,
             'description'     => 'not_schedule_message_success',
             'additional_data' => serialize([
+                $staff['full_name'],
                 _d($schedule->schedule_date),
                 format_schedule_time($schedule->schedule_time),
             ]),

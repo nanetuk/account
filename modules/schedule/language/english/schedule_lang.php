@@ -15,5 +15,5 @@ $lang['schedule_notify']                                                    = 'N
 $lang['schedule_notified']                                                  = 'Notifed?';
 $lang['schedule_total']                                                     = 'Total: %s';
 $lang['task_timesheets']                                                    = 'Timesheets';
-$lang['not_schedule_message_success']                                       = 'New schedule!<br /> Date: %s
-<br />Time: %s';
+$lang['not_schedule_message_success']                                       = '%s - new schedule!<br><small>Date: %s</small>
+<br><small>Time: %s</small>';
