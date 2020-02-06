@@ -142,7 +142,7 @@ class Schedule_model extends App_Model
             'notified' => 1,
         ]);
 
-        if (count($staff) > 0 && $this->db->affected_rows() > 0) {
+        if ($this->db->affected_rows() > 0) {
             return true;
         }
 
