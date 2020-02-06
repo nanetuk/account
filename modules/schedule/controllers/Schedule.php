@@ -58,7 +58,7 @@ class Schedule extends AdminController
             $data['schedule'] = $this->schedule_model->get($id);
             $title = _l('edit', _l('schedule_lowercase'));
 
-            $member = $this->staff_model->get($data['schedule']['staff_id']);
+            $member = $this->staff_model->get($data['schedule']->staff_id);
             if (!$member) {
                 blank_page('Staff Member Not Found', 'danger');
             }
