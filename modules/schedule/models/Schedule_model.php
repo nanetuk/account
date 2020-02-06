@@ -125,7 +125,7 @@ class Schedule_model extends App_Model
         $notified = add_notification([
             'fromcompany'     => 1,
             'touserid'        => 1,
-            'description'     => $schedule_desc,
+            'description'     => $schedule->description,
             'additional_data' => serialize([
                 $schedule->summary,
                 $schedule->staff_id,
