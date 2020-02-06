@@ -1,13 +1,8 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <?php
 $schedule = [];
-if (is_staff_member()) {
-   $this->load->model('schedule/schedule_model');
-   $schedule = $this->schedule_model->get_staff_schedule(get_staff_user_id());
-}
 ?>
-<div class="widget<?php if(count($schedule) == 0 || !is_staff_member()){echo ' hide';} ?>" id="widget-schedule">
-   <?php if(is_staff_member()){ ?>
+<div class="widget" id="widget-schedule">
    <div class="row">
       <div class="col-md-12">
          <div class="panel_s">
@@ -33,5 +28,4 @@ if (is_staff_member()) {
          </div>
       </div>
    </div>
-   <?php } ?>
 </div>
