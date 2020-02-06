@@ -26,7 +26,7 @@
                 </div>
             </div>
             <?php if ($schedule) { ?>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="panel_s">
                     <div class="panel-body">
                     <h4 class="no-margin">
