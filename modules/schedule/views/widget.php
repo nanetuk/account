@@ -6,7 +6,7 @@ if (is_staff_member()) {
    $schedule = $this->schedule_model->get_staff_schedule(get_staff_user_id());
 }
 ?>
-<div class="widget<?php if(count($schedule) == 0 || !is_staff_member()){echo ' hide';} ?>" id="widget-<?php echo basename(__FILE__,".php"); ?>">
+<div class="widget<?php if(count($schedule) == 0 || !is_staff_member()){echo ' hide';} ?>" id="widget-schedule">
    <?php if(is_staff_member()){ ?>
    <div class="row">
       <div class="col-md-12">
