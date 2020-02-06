@@ -36,7 +36,7 @@
                     <?php echo form_open($this->uri->uri_string(),array('method'=>'GET')); ?>
                     <?php echo form_hidden('filter','true'); ?>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-3">
                             <div class="select-placeholder">
                                 <select name="range" id="range" class="selectpicker" data-width="100%">
                                 <option value="this_month" <?php if(!$range || $range == 'this_month'){echo 'selected';} ?>><?php echo _l('staff_stats_this_month_total_logged_time'); ?></option>
@@ -46,16 +46,14 @@
                                 <option value="period" <?php if($range == 'period'){echo 'selected';} ?>><?php echo _l('period_datepicker'); ?></option>
                                 </select>
                             </div>
-                            <div class="row mtop15">
-                                <div class="col-md-12 period <?php if($range != 'period'){echo 'hide';} ?>">
-                                <?php echo render_date_input('period-from','',$period_from); ?>
-                                </div>
-                                <div class="col-md-12 period <?php if($range != 'period'){echo 'hide';} ?>">
-                                <?php echo render_date_input('period-to','',$period_to); ?>
-                                </div>
-                            </div>
                         </div>
-                        <div class="col-md-12 text-right">
+                        <div class="col-md-3 period <?php if($range != 'period'){echo 'hide';} ?>">
+                        <?php echo render_date_input('period-from','',$period_from); ?>
+                        </div>
+                        <div class="col-md-3 period <?php if($range != 'period'){echo 'hide';} ?>">
+                        <?php echo render_date_input('period-to','',$period_to); ?>
+                        </div>
+                        <div class="col-md-3 text-right">
                             <button type="submit" class="btn btn-success apply-timesheets-filters"><?php echo _l('apply'); ?></button>
                         </div>
                     </div>
